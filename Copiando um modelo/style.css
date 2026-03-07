@@ -1,8 +1,14 @@
+*{
+    max-width: 100%
+}
+body{
+    background-color: lightgray;
+}
 h1{
     color: darkgreen;
     padding: 50px 50px;
     text-align: center;
-    size: 25pt;
+    font-size: 25pt;
     margin: 10px;
     border: solid 3px darkblue;
     box-shadow: 0 50px  lightskyblue;
@@ -47,37 +53,39 @@ h1{
 
 h2{
     position:relative;
-    padding: 20px;
+    padding: 10px;
     color:black;
     text-align:center;
     font-style: sans-serif;
+    font-size: 22pt;
 }
-p{
+
+.text{
     color:indigo;
-    size: 20pt;
+    font-size: 20pt;
     font-style: sans-serif;
     text-align: center;
 }
 
 #b1{
     position: relative;
-    padding-left: 80px;
-    padding-right: 80px;
+    margin-left: 100px;
+    margin-right: 80px;
     width:320px;
     height:450px;
 }
 #b2{
     position: relative;
-    padding-left: 80px;
-    padding-right: 80px;
-    width: 300px;
+    margin-left: 100px;
+    margin-right: 80px;
+    width: 380px;
     height:450px;
   }
 
 #b3{
     position: relative;
-    padding-left: 80px;
-    padding-right: 80px;
+    margin-left: 100px;
+    margin-right: 80px;
     width: 320px;
     height: 450px;
 }
@@ -86,7 +94,7 @@ p{
     width: 400px;
     height: 400px;
     position: relative;
-    margin-left: 300px;
+    margin-left: 350px;
     margin-right: 100px;
 }
 
@@ -94,7 +102,7 @@ p{
     width: 400px;
     height: 400px;
     position: relative;
-    margin-right:200px;
+    margin-right:350px;
 }
 
 table tr th{
@@ -109,16 +117,39 @@ table{
     left: 38%;
 }
 
+.titulo{
+    color: red;
+}
+
+a{
+    display:block;
+    color:red;
+}
+
+#a1{
+    position: absolute;
+    top: 2110px;
+    left: 800px;
+}
+
+#a2{
+    position: absolute;
+    top: 2130px;
+    left: 800px;
+}
+
+#a3{
+    position: absolute;
+    top: 2148px;
+    left: 800px;
+}
+
 div{
     border: 0;
-    padding: 50px;
     background-color: yellow;
     margin: 50px;
     margin-left:500px;
     margin-right:500px;
-
-    
-
 }
 
 #p{
@@ -128,6 +159,36 @@ div{
 
 #u2{
     color: black;
+}
+
+h3{
+    font-family: Comic Sans MS;
+    font-size: 15pt; 
+    color: black;
+    text-align: center;
+    padding: 50px 50px;
+    margin: 10px;
+    border: 0;
+    background-color: bisque;
+    width:96%;
+    height:75px;
+
+}
+
+#html{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top:2250px;
+    left:50px;
+}
+
+#css{
+    width: 85px;
+    height: 100px;
+    position: absolute;
+    top:2250px;
+    right:50px;
 }
 
 
