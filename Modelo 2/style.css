@@ -1,0 +1,86 @@
+#d1{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    background-color: rgb(112, 71, 158);
+    width: 150px;
+    height: 125px;
+}
+
+#text1{
+     display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    margin: 0;
+}
+
+.text2{
+    display: flex;
+    justify-content: flex-start;
+    color: white;
+    font-size: 22pt;
+    margin: 5px;
+}
+
+
+#header{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+a{
+    color: rgb(48, 87, 139);
+    text-decoration: underline;
+}
+
+#textlink{
+    color: rgb(48, 87, 139);
+}
+
+#div2{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#div3{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#img3{
+    display: flex;
+    justify-content: center;
+}
+
+#div4{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#text3{
+    color: rgb(48, 87, 139);
+}
+
+#div5{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#div6{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#div7{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
