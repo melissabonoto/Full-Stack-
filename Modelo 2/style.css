@@ -8,6 +8,8 @@
     height: 125px;
 }
 
+
+
 #text1{
      display: flex;
     justify-content: center;
@@ -21,9 +23,12 @@
     justify-content: flex-start;
     color: white;
     font-size: 22pt;
-    margin: 5px;
+    margin: 4px;
 }
 
+.linha{
+    color: grey;
+}
 
 #header{
     display: flex;
@@ -52,35 +57,38 @@ a{
     gap: 10px;
 }
 
-#img3{
+#div4{
     display: flex;
     justify-content: center;
+    padding-top: 10px;
 }
 
-#div4{
+#div5{
     margin: 20px;
     display: flex;
     justify-content: center;
+    
 }
 
 #text3{
     color: rgb(48, 87, 139);
 }
 
-#div5{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 #div6{
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 #div7{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#div8{
     display: flex;
     justify-content: center;
     gap: 10px;
+    padding-top: 10px;
 }
