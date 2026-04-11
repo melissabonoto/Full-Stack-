@@ -1,3 +1,7 @@
+*{
+  font: Arial;
+}
+
 h1{
     color:white;
     background-color: palevioletred;
@@ -68,13 +72,25 @@ th, td {
 }
 
 img{
-  width: 300px;
-  height: 200px;
+  width: 200px;
+  height: 100px;
+}
+
+#diviframes{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 50px;
 }
 
 iframe{
   width:400px;
   height:400px;
-  position: relative;
-  margin: 30px;
+}
+
+#lista{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
 }
