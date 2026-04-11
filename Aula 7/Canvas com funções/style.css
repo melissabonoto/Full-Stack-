@@ -1,4 +1,20 @@
+h1{
+    text-align: center;
+    margin-top: 50px;
+}
+
+div{
+    display: flex;
+    justify-content: space-around;
+    margin: 70px;
+}
+
 #canvas1{
     background-color: white;
     border: 1px solid black;
 }
+
+#canvas2{
+    background-color: aquamarine;
+}
+    
