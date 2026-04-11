@@ -1,0 +1,80 @@
+h1{
+    color:white;
+    background-color: palevioletred;
+    font-size: 18pt
+}
+h2{
+     color:white;
+    background-color: palevioletred;
+    font-size: 16pt
+}
+
+#nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: lightpink;
+}
+
+#nav .pagina {
+  float: left;
+}
+
+#nav .pagina .link {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#nav .pagina .link:hover {
+  background-color:palevioletred;
+}
+
+a{
+  color:white;
+  background-color: lightpink;
+  font-size: 14pt;
+}
+
+a:hover{
+    color: white;
+    background-color: palevioletred;
+}
+
+.texto{
+    color:black;
+    font-size: 14pt;
+}
+#proj{
+    color:palevioletred;
+    background-color: white;
+    font-size: 18pt;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+#titulo{
+    color: white;
+    background-color: palevioletred;
+}
+
+img{
+  width: 300px;
+  height: 200px;
+}
+
+iframe{
+  width:400px;
+  height:400px;
+  position: relative;
+  margin: 30px;
+}
