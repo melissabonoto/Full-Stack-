@@ -1,0 +1,10 @@
+h1{
+    text-align: center;
+}
+
+#canvas{
+    display: flex;
+    background-color: gainsboro;
+    border: solid 2px black;
+    justify-content: center;
+}
