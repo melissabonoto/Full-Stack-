@@ -1,10 +1,15 @@
 h1{
     text-align: center;
+    margin-top: 100px;
 }
 
 #canvas{
+    background-color: paleturquoise;
+    border: solid 3px lightseagreen;
+}
+
+div{
     display: flex;
-    background-color: gainsboro;
-    border: solid 2px black;
     justify-content: center;
+    margin-top: 50px;
 }
