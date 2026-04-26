@@ -94,3 +94,9 @@ iframe{
   justify-content: space-between;
   gap: 10px;
 }
+
+.linktabela{
+  color: black;
+  background-color: white;
+  font-size: 12pt;
+}
