@@ -5,13 +5,33 @@
 
 h1{
     text-align: center;
+    margin-top: 100px;
 }
 
 p{
     text-align: center;
 }
 
-div{
+.inputs{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#button{
+    width: 100px;
+}
+
+#divigualigual{
+    display: flex;
+    justify-content: center;
+}
+
+#igual #maior #menor{
+    width: fit-content;
+}
+
+.div{
     display: flex;
     justify-content: center;
 }
