@@ -1,0 +1,31 @@
+*{
+    background-color: lightpink;
+    font-family:Arial, Helvetica, sans-serif
+}
+
+h1{
+    margin-top: 50px;;
+    text-align: center;
+}
+
+div{
+    display: inline-flex;
+    margin-left: 41%;
+    margin-top: 50px;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+    padding: 20px;
+}
+
+#button{
+    margin-top: 10px;
+    margin-left: 30%;
+    justify-items: center;
+}
+
+p{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
