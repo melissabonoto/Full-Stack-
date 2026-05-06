@@ -1,0 +1,23 @@
+p{
+    font-size: 16pt
+}
+
+ #p1{
+    color:palevioletred;
+}
+
+#p2{
+    color:palevioletred;
+}
+
+.pb{
+    color:white;
+    background-color: black;
+}
+a{
+    color:violet;
+    font-size: 16pt;
+}
+a:hover{
+    background-color: lightgray;
+}

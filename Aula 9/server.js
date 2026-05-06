@@ -2,6 +2,14 @@ require("colors");
 var http = require("http");
 var express = require("express");
 var bodyParser = require("body-parser");
+var mongodb = require("mongodb");
+
+const MongoClient = mongodb.MongoClient;
+const uri = "mongodb+srv://melissabonoto:db2026@cluster0.svvktz0.mongodb.net/?appName=Cluster0"
+const client = new MongoClient(uri, {useNewUrlParser: true});
+
+var dbo = client.db("exemplo_bd");
+var usuarios = dbo.collection("usuarios");
 
 var app = express();
 app.use(express.static("./public"));
@@ -51,3 +59,38 @@ app.get("/for", function(req, res){
     res.render("exemplofor.ejs", {qtde})
 
 });
+
+app.post("/cadastrar_usuario", function(req, res){
+    var data = {
+        db_nome: req.body.nome_user, 
+        db_login: req.body.login_user, 
+        db_senha: req.body.senha_user 
+    };
+
+    usuarios.insertOne(data, function (err){
+        if (err) {
+        res.render('resposta_usuario', {resposta: "Erro ao cadastrar usuário!"})
+        }else {
+        res.render('resposta_usuario', {resposta: "Usuário cadastrado com sucesso!"})        
+      };
+    });
+});
+
+app.post("/logar_usuario", function (req, res){
+    var data = { 
+        db_login: req.body.login_user, 
+        db_senha: req.body.senha_user 
+    };
+
+   usuarios.find(data).toArray(function(err, items) {
+      console.log(items);
+      if (items.length == 0) {
+        res.render('resposta_usuario', {resposta: "Usuário/senha não encontrado!"})
+      }else if (err) {
+        res.render('resposta_usuario', {resposta: "Erro ao logar usuário!"})
+      }else {
+        res.render('resposta_usuario', {resposta: "Usuário logado com sucesso!"})        
+      };
+    });
+
+  });
