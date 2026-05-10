@@ -1,3 +1,32 @@
-*{
+body{
     background-color: gainsboro;
+}
+
+h1{
+    text-align: center;
+    margin-top: 5%;
+}
+
+#div1{
+    display: flex;
+    justify-content: center;
+}
+
+#button{
+    margin-left: 50%;
+    margin-top: 50px;
+}
+
+#post{
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+    border: 3px solid black;
+    width: 700px;
+}
+
+#posts{
+    display:flex;
+    justify-content: center;
 }
