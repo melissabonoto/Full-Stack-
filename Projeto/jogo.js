@@ -8,6 +8,7 @@ var ctx = canvas.getContext("2d");
 //     ctx.drawImage(fundo, 0, 0, canvas.width, canvas.height);
 // };
 
+
 let player = {
     x: 550,
     y: 300,
@@ -130,6 +131,19 @@ let inimigos_d = [];
 
     setInterval(criarInimigoDireita, 2000);
     setInterval(criarInimigoEsquerda, 3000);
+
+    function colidiu(player, inimigo){
+        if(
+            player.x < inimigo.x + inimigo.w &&
+            player.x + player.w > inimigo.x &&
+            player.y < inimigo.y + inimigo.h &&
+            player.y + player.h > inimigo.y
+        ){
+            return true;
+        }
+
+        return false;
+}
 
 let vida = 3;
 function desenhar(){
