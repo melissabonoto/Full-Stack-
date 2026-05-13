@@ -133,16 +133,19 @@ let inimigos_d = [];
     setInterval(criarInimigoEsquerda, 3000);
 
     function colidiu(player, inimigo){
-        if(
-            player.x < inimigo.x + inimigo.w &&
-            player.x + player.w > inimigo.x &&
-            player.y < inimigo.y + inimigo.h &&
-            player.y + player.h > inimigo.y
-        ){
-            return true;
-        }
 
-        return false;
+    let margem = 20;
+
+    if(
+        player.x + margem < inimigo.x + inimigo.w - margem &&
+        player.x + player.w - margem > inimigo.x + margem &&
+        player.y + margem < inimigo.y + inimigo.h - margem &&
+        player.y + player.h - margem > inimigo.y + margem
+    ){
+        return true;
+    }
+
+    return false;
 }
 
 let vida = 3;
