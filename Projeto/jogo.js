@@ -30,11 +30,9 @@ document.addEventListener("keydown", function(evento){
 if (player.tamanho < 30){
     var vel = 50;
 }
-
 else if (player.tamanho < 60 ){
     var vel = 40;
 }
-
 else {
     var vel = 30;
 }
@@ -132,20 +130,6 @@ let inimigos_d = [];
 
     setInterval(criarInimigoDireita, 2000);
     setInterval(criarInimigoEsquerda, 3000);
-
-function colidiu(player, inimigo){
-
-    if(
-        player.x < inimigo.x + inimigo.w &&
-        player.x + player.w > inimigo.x &&
-        player.y < inimigo.y + inimigo.h &&
-        player.y + player.h > inimigo.y
-    ){
-        return true;
-    }
-
-    return false;
-}
 
 let vida = 3;
 function desenhar(){
