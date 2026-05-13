@@ -130,8 +130,8 @@ let inimigos_d = [];
         inimigos_e.push(inimigo);
     }
 
-    setInterval(criarInimigoDireita, 3000);
-    setInterval(criarInimigoEsquerda, 4000);
+    setInterval(criarInimigoDireita, 2000);
+    setInterval(criarInimigoEsquerda, 3000);
 
 function colidiu(player, inimigo){
 

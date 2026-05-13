@@ -17,6 +17,7 @@ body{
 h1{
     text-align: center;
     margin-top: 30px;
+    padding: 10px;
 }
 
 h2{
@@ -54,6 +55,11 @@ ul li a:hover {
 .div1interna{
     flex-direction: column;
     border: 3px solid steelblue;
-    padding: 20px;
+    padding: 15px;
 
+}
+
+p{
+    text-align: center;
+    padding: 20px;
 }
