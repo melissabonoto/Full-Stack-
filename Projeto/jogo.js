@@ -1,13 +1,12 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
-// var fundo = new Image ();
-// fundo.src = "fundo.jpg";
+var fundo = new Image ();
+fundo.src = "fundo.jpeg";
 
-// fundo.onload = function () {
-//     ctx.drawImage(fundo, 0, 0, canvas.width, canvas.height);
-// };
-
+fundo.onload = function () {
+    ctx.drawImage(fundo, 0, 0, canvas.width, canvas.height);
+};
 
 let player = {
     x: 550,
@@ -24,37 +23,39 @@ player.img.onload = function () {
     ctx.drawImage(player.img, player.x, player.y, player.w, player.h);
 }
 
-document.addEventListener("keydown", function(evento){
-    var tecla = evento.key;
-    console.log(tecla);
+function movimentacao(){
+    document.addEventListener("keydown", function(evento){
+        var tecla = evento.key;
+        console.log(tecla);
 
-if (player.tamanho < 30){
-    var vel = 50;
+    if (player.tamanho < 30){
+        var vel = 60;
+    }
+    else if (player.tamanho < 60 ){
+        var vel = 40;
+    }
+    else {
+        var vel = 30;
+    }
+
+        if (tecla == "ArrowUp") {player.y -= vel}
+        if (tecla == "ArrowDown") {player.y += vel}
+        if (tecla == "ArrowLeft") {player.x -= vel}
+        if (tecla == "ArrowRight") {player.x += vel}
+
+        if (tecla == "ArrowLeft") {player.img.src = "playerl.png"}
+        if (tecla == "ArrowRight") {player.img.src = "playerr.png"}
+
+        if (player.y >= canvas.height - player.h) {player.y = canvas.height - player.h}
+        if (player.y <= 0) {player.y = 0}
+        if (player.x >= canvas.width - player.w) {player.x = canvas.width - player.w}
+        if (player.x <= 0) {player.x = 0}
+        
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(player.img, player.x, player.y, player.w, player.h);
+    })
 }
-else if (player.tamanho < 60 ){
-    var vel = 40;
-}
-else {
-    var vel = 30;
-}
-
-    if (tecla == "ArrowUp") {player.y -= vel}
-    if (tecla == "ArrowDown") {player.y += vel}
-    if (tecla == "ArrowLeft") {player.x -= vel}
-    if (tecla == "ArrowRight") {player.x += vel}
-
-    if (tecla == "ArrowLeft") {player.img.src = "playerl.png"}
-    if (tecla == "ArrowRight") {player.img.src = "playerr.png"}
-
-    if (player.y >= canvas.height - player.h) {player.y = canvas.height - player.h}
-    if (player.y <= 0) {player.y = 0}
-    if (player.x >= canvas.width - player.w) {player.x = canvas.width - player.w}
-    if (player.x <= 0) {player.x = 0}
-    
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(player.img, player.x, player.y, player.w, player.h);
-})
 
 let inimigos_d = [];
     function criarInimigoDireita(){
@@ -129,28 +130,27 @@ let inimigos_d = [];
         inimigos_e.push(inimigo);
     }
 
-    setInterval(criarInimigoDireita, 2000);
-    setInterval(criarInimigoEsquerda, 3000);
-
     function colidiu(player, inimigo){
+        let margem_player = player.w * 0.25;
+        let margem_inimigo = inimigo.w * 0.25;
 
-    let margem = 20;
+        if(
+            player.x + margem_player < inimigo.x + inimigo.w - margem_inimigo &&
+            player.x + player.w - margem_player > inimigo.x + margem_inimigo &&
+            player.y + margem_player < inimigo.y + inimigo.h - margem_inimigo &&
+            player.y + player.h - margem_player > inimigo.y + margem_inimigo
+        ){
+            return true;
+        }
 
-    if(
-        player.x + margem < inimigo.x + inimigo.w - margem &&
-        player.x + player.w - margem > inimigo.x + margem &&
-        player.y + margem < inimigo.y + inimigo.h - margem &&
-        player.y + player.h - margem > inimigo.y + margem
-    ){
-        return true;
-    }
-
-    return false;
+        return false;
 }
 
 let vida = 3;
 function desenhar(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.drawImage(fundo, 0, 0, canvas.width, canvas.height);
 
     for (let i=0; i <inimigos_d.length; i++){
 
@@ -236,4 +236,12 @@ function desenhar(){
     requestAnimationFrame(desenhar);
 }
 
-desenhar();
+function jogo(){
+    movimentacao();
+
+    setInterval(criarInimigoDireita, 2000);
+    setInterval(criarInimigoEsquerda, 3000);
+
+    desenhar()
+    
+}

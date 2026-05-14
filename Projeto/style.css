@@ -2,12 +2,10 @@ body{
     background-color: rgb(133, 177, 215);
 }
 
-#canvas{
-    display: flex;
+#divcanvas{
+    display:flex;
     justify-content: center;
-    margin-left: 150px;
-    margin-top: 20px;
-    background-color: #145da0;
+    margin-top: 40px;
 }
 
 *{
@@ -31,7 +29,7 @@ ul {
   background-color: steelblue;
   display: flex;
   justify-content: space-around;
-  padding-left: 80px;
+  padding-left: 95px;
 }
 
 ul li a {
@@ -45,7 +43,7 @@ ul li a:hover {
   background-color: skyblue;
 }
 
-#div1{
+.div1externa{
     display: flex;
     justify-content: center;
     margin-top: 100px;
@@ -59,7 +57,37 @@ ul li a:hover {
 
 }
 
+.div2externa{
+    display: flex;
+    flex-direction: column;
+}
+
+.div2interna{
+    border: 3px solid steelblue;
+    flex-direction: column;
+    padding: 15px;
+    align-self: center;
+    justify-self: center;
+    margin: 30px;
+    margin-top: 15px;
+    width: 600px;
+}
+
 p{
     text-align: center;
     padding: 20px;
+}
+
+#button{
+    margin-left: 46%;
+    margin-top: 30px;
+    font-size: 14pt;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: steelblue;
+}
+
+#button:hover{
+    background-color: skyblue;     
 }
