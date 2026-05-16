@@ -38,7 +38,7 @@ function movimentacao(){
         var tecla = evento.key;
         var vel = 20;
 
-        let margem = player.h * 0.1;
+        let margem = player.h * 0.2;
 
         if (tecla == "ArrowUp") {player.y -= vel}
         if (tecla == "ArrowDown") {player.y += vel}
