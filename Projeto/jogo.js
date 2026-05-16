@@ -1,23 +1,29 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
+let gameover = false;
+let jogoiniciado = false;
+
 var fundo = new Image ();
-fundo.src = "fundo.jpeg";
+fundo.src = "imagens/fundo.jpeg";
 
 fundo.onload = function () {
     ctx.drawImage(fundo, 0, 0, canvas.width, canvas.height);
 };
 
+var vida = new Image ();
+vida.src = "imagens/vida.png";
+
 let player = {
     x: 550,
     y: 300,
-    w: 60,
-    h: 60,
-    tamanho: 50,
+    w: 40,
+    h: 40,
+    tamanho: 1,
     img: new Image()
 }
 
-player.img.src = "playerr.png";
+player.img.src = "imagens/playerr.png";
 
 player.img.onload = function () {
     ctx.drawImage(player.img, player.x, player.y, player.w, player.h);
@@ -25,32 +31,27 @@ player.img.onload = function () {
 
 function movimentacao(){
     document.addEventListener("keydown", function(evento){
-        var tecla = evento.key;
-        console.log(tecla);
+        if (gameover){
+            return;
+        }
 
-    if (player.tamanho < 30){
-        var vel = 60;
-    }
-    else if (player.tamanho < 60 ){
-        var vel = 40;
-    }
-    else {
-        var vel = 30;
-    }
+        var tecla = evento.key;
+        var vel = 20;
+
+        let margem = player.h * 0.1;
 
         if (tecla == "ArrowUp") {player.y -= vel}
         if (tecla == "ArrowDown") {player.y += vel}
         if (tecla == "ArrowLeft") {player.x -= vel}
         if (tecla == "ArrowRight") {player.x += vel}
 
-        if (tecla == "ArrowLeft") {player.img.src = "playerl.png"}
-        if (tecla == "ArrowRight") {player.img.src = "playerr.png"}
+        if (tecla == "ArrowLeft") {player.img.src = "imagens/playerl.png"}
+        if (tecla == "ArrowRight") {player.img.src = "imagens/playerr.png"}
 
-        if (player.y >= canvas.height - player.h) {player.y = canvas.height - player.h}
-        if (player.y <= 0) {player.y = 0}
+        if (player.y >= canvas.height - player.h + margem) {player.y = canvas.height - player.h + margem}
+        if (player.y <= 90 - margem) {player.y = 90 - margem}
         if (player.x >= canvas.width - player.w) {player.x = canvas.width - player.w}
         if (player.x <= 0) {player.x = 0}
-        
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(player.img, player.x, player.y, player.w, player.h);
@@ -59,11 +60,28 @@ function movimentacao(){
 
 let inimigos_d = [];
     function criarInimigoDireita(){
-            let tamanho = Math.random() * 60 + 30;
+        if (player.tamanho == 1){
+            var tamanho = 1;
+        }
+
+        else if (player.tamanho < 15){
+            var tamanho = Math.random() * 20 + 1;
+        }
+
+        else if (player.tamanho < 30) {
+            var tamanho = Math.random() * 40 + 5;
+        }
+
+        else if (player.tamanho < 50)
+            var tamanho = Math.random() * 70 + 10;
+
+        else{
+            var tamanho = Math.random() * 100 + 20;
+        }
 
             let inimigo = {
                 x: canvas.width,
-                y: Math.random() * (canvas.height - tamanho),
+                y: Math.random() * (canvas.height - tamanho - 90) + 90,
 
                 tamanho: tamanho,
 
@@ -75,16 +93,20 @@ let inimigos_d = [];
                 img: new Image()
 
         };
-        if (tamanho < 55){
-            inimigo.img.src = `peixe10.png`;
+        if (tamanho < 30){
+            inimigo.img.src = `imagens/peixe10.png`;
+            inimigo.w += 30;
+            inimigo.h += 30;
         }
-        else if  (tamanho < 80) {
-            inimigo.img.src = `peixe5.png`;
-            inimigo.w += 80;
-            inimigo.h += 80;
+
+        else if  (tamanho < 70) {
+            inimigo.img.src = `imagens/peixe5.png`;
+            inimigo.w += 70;
+            inimigo.h += 70;
         }
+
         else {
-            inimigo.img.src = `peixe2.png`;
+            inimigo.img.src = `imagens/peixe2.png`;
             inimigo.w += 150;
             inimigo.h += 150;
         }
@@ -95,11 +117,28 @@ let inimigos_d = [];
 
     let inimigos_e = [];
     function criarInimigoEsquerda(){
-            let tamanho = Math.random() * 60 + 30;
+           if (player.tamanho == 1){
+                var tamanho = 1;
+            }
+
+            else if (player.tamanho < 15){
+                var tamanho = Math.random() * 20 + 1;
+            }
+
+            else if (player.tamanho < 30) {
+                var tamanho = Math.random() * 40 + 5;
+            }
+
+            else if (player.tamanho < 50)
+                var tamanho = Math.random() * 70 + 10;
+
+            else{
+                var tamanho = Math.random() * 100 + 20;
+            }
 
             let inimigo = {
                 x: 0,
-                y: Math.random() * (canvas.height - tamanho),
+                y: Math.random() * (canvas.height - tamanho - 90) + 90,
 
                 tamanho: tamanho,
 
@@ -111,20 +150,23 @@ let inimigos_d = [];
                 img: new Image()
 
         };
-        if (tamanho < 50){
-            inimigo.img.src = `peixe-7.png`;
-            inimigo.w += 15;
-            inimigo.h += 15;
+
+        if (tamanho < 30){
+            inimigo.img.src = `imagens/peixe-7.png`;
+            inimigo.w += 45;
+            inimigo.h += 45;
         }
-        else if  (tamanho < 80) {
-            inimigo.img.src = `peixe-4.png`;
-            inimigo.w += 80;
-            inimigo.h += 80;
+
+        else if  (tamanho < 70) {
+            inimigo.img.src = `imagens/peixe-4.png`;
+            inimigo.w += 60;
+            inimigo.h += 60;
         }
+
         else {
-            inimigo.img.src = `peixe-6.png`;
-            inimigo.w += 90;
-            inimigo.h += 90;
+            inimigo.img.src = `imagens/peixe-6.png`;
+            inimigo.w += 110;
+            inimigo.h += 110;
         }
 
         inimigos_e.push(inimigo);
@@ -146,9 +188,28 @@ let inimigos_d = [];
         return false;
 }
 
-let vida = 3;
+let cont_vida = 3;
 function desenhar(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (gameover){
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "white";
+        ctx.font = 'bold 50px Trebuchet MS';
+        ctx.fillText("GAME OVER!", 460, 320);
+        ctx.closePath();
+
+        ctx.font = 'bold 20px Trebuchet MS';
+        ctx.fillText("Clique no botão para reiniciar o jogo!", 420, 360);
+
+        return;
+    };
+    
+    ctx.shadowColor = "black";
+    ctx.shadowBlur = 3;
 
     ctx.drawImage(fundo, 0, 0, canvas.width, canvas.height);
 
@@ -162,10 +223,10 @@ function desenhar(){
 
             if(player.tamanho >= inimigo.tamanho){
 
-                player.tamanho += 2;
+                player.tamanho += 5;
 
-                player.w += 5;
-                player.h += 5;
+                player.w += 9;
+                player.h += 9;
 
                 inimigos_d.splice(i, 1);
                 i--;
@@ -173,14 +234,13 @@ function desenhar(){
 
             else{
 
-                vida--;
+                cont_vida--;
 
                 inimigos_d.splice(i, 1);
                 i--;
 
-                if(vida <= 0){
-                    alert("Game Over");
-                    location.reload();
+                if(cont_vida <= 0){
+                    gameover = true;
                 }
             }
         }
@@ -198,10 +258,10 @@ function desenhar(){
 
             if(player.tamanho >= inimigo.tamanho){
 
-                player.tamanho += 2;
+                player.tamanho += 5;
 
-                player.w += 5;
-                player.h += 5;
+                player.w += 9;
+                player.h += 9;
 
                 inimigos_e.splice(i, 1);
                 i--;
@@ -209,14 +269,13 @@ function desenhar(){
 
             else{
 
-                vida--;
+                cont_vida--;
 
                 inimigos_e.splice(i, 1);
                 i--;
 
-                if(vida <= 0){
-                    alert("Game Over");
-                    location.reload();
+                if(cont_vida <= 0){
+                    gameover = true;
                 }
             }
         }
@@ -224,19 +283,63 @@ function desenhar(){
 
     ctx.drawImage(player.img, player.x, player.y, player.w, player.h);
 
-    ctx.font = '30px Arial';
+    ctx.beginPath();
+    ctx.fillStyle = "steelblue";
+    ctx.globalAlpha = 0.65;
+    ctx.shadowBlur = 0;
+    ctx.fillRect(0, 0, canvas.width, 90);
+    ctx.globalAlpha = 1;
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.fillStyle = "white";
+    ctx.globalAlpha = 0.8;
+    ctx.roundRect(870, 20, 100, 60, 5);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.closePath();
+
+
+    ctx.beginPath();
+    ctx.font = 'bold 30px Trebuchet MS';
     ctx.fillStyle = 'black';
+    ctx.shadowBlur = 1;
 
-    ctx.fillText('Vidas: ', 50, 50);
-    ctx.fillText(vida, 150, 50);
+    ctx.fillText('Tamanho ', 720, 60);
+    ctx.fillText(player.tamanho, 900, 60);
+    ctx.closePath();
 
-    ctx.fillText('Tamanho: ', 550, 50);
-    ctx.fillText(player.tamanho, 700, 50);
+    ctx.shadowColor = "black";
+    ctx.shadowBlur = 3;
+
+    if (cont_vida == 3){
+        ctx.drawImage(vida, 30, 20, 64, 64);
+        ctx.drawImage(vida, 100, 20, 64, 64);
+        ctx.drawImage(vida, 170, 20, 64, 64);
+    }
+    else if (cont_vida == 2){
+        ctx.drawImage(vida, 30, 20, 64, 64);
+        ctx.drawImage(vida, 100, 20, 64, 64);
+    }
+    else if (cont_vida == 1) {
+        ctx.drawImage(vida, 30, 20, 64, 64);
+    }
 
     requestAnimationFrame(desenhar);
 }
 
 function jogo(){
+    if(gameover){
+        location.reload();
+        return;
+    };
+
+    if (jogoiniciado){
+        return;
+    }
+
+    jogoiniciado = true;
+
     movimentacao();
 
     setInterval(criarInimigoDireita, 2000);
