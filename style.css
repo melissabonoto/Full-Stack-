@@ -1,15 +1,36 @@
-body{
-    background-color: rgb(133, 177, 215);
+html,body{
+    margin:0;
+    background-image:url("Fundo.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    height:100vh;
+    padding:0;
+    height:100%;
+    overflow:hidden;
+   
 }
 
-#canvas{
-    display: flex;
+#divcanvas{
+    display:flex;
     justify-content: center;
-    margin-left: 150px;
-    margin-top: 20px;
-    background-color: #145da0;
+    margin-top: 40px;
+    margin-bottom: 50px;
 }
 
+.div1interna{
+    color:white;
+
+}
+
+.div1interna{
+    color:white;
+
+}
+
+.div2interna{
+    color:white;
+}
 *{
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -17,6 +38,7 @@ body{
 h1{
     text-align: center;
     margin-top: 30px;
+    padding: 10px;
 }
 
 h2{
@@ -30,7 +52,7 @@ ul {
   background-color: steelblue;
   display: flex;
   justify-content: space-around;
-  padding-left: 80px;
+  padding-left: 95px;
 }
 
 ul li a {
@@ -44,7 +66,7 @@ ul li a:hover {
   background-color: skyblue;
 }
 
-#div1{
+.div1externa{
     display: flex;
     justify-content: center;
     margin-top: 100px;
@@ -54,6 +76,58 @@ ul li a:hover {
 .div1interna{
     flex-direction: column;
     border: 3px solid steelblue;
+    padding: 15px;
+
+}
+
+.div2externa{
+    display: flex;
+    flex-direction: column;
+}
+
+.div2interna{
+    border: 3px solid steelblue;
+    flex-direction: column;
+    padding: 15px;
+    align-self: center;
+    justify-self: center;
+    margin: 30px;
+    margin-top: 15px;
+    width: 600px;
+}
+
+p{
+    text-align: center;
     padding: 20px;
+}
+
+#button{
+    position:absolute;
+    top:70%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:200px;
+    height:80px;
+    font-size:30px;
+    border-radius: 15px;
+    border-color:rgb(32, 32, 140);
+    color:white;
+    background-color: rgb(80, 124, 254);
+}
+
+#button:hover{
+    background-color: rgb(0, 238, 255);     
+}
+
+.logo{
+    display:flex;
+    justify-content:center;
+    margin-top:40px;
+}
+.logo img{
+    width:700px;
+    height:auto;
+
+    margin-top:-250px;
 
 }
