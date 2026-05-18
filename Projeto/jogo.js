@@ -73,10 +73,10 @@ let inimigos_d = [];
         }
 
         else if (player.tamanho < 50)
-            var tamanho = Math.random() * 70 + 10;
+            var tamanho = Math.random() * 60 + 10;
 
         else{
-            var tamanho = Math.random() * 100 + 20;
+            var tamanho = Math.random() * 80 + 20;
         }
 
             let inimigo = {
