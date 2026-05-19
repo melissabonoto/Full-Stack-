@@ -2,13 +2,17 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
 let gameover = false;
+let vitoria = false;
 let jogoiniciado = false;
 
 var fundo = new Image ();
 fundo.src = "imagens/fundo.jpeg";
 
-fundo.onload = function () {
-    ctx.drawImage(fundo, 0, 0, canvas.width, canvas.height);
+var logo = new Image();
+logo.src = "imagens/logoo.png";
+
+logo.onload = function () {
+    ctx.drawImage(logo, 160, -250, 896, 896);
 };
 
 var vida = new Image ();
@@ -25,13 +29,13 @@ let player = {
 
 player.img.src = "imagens/playerr.png";
 
-player.img.onload = function () {
-    ctx.drawImage(player.img, player.x, player.y, player.w, player.h);
-}
-
 function movimentacao(){
     document.addEventListener("keydown", function(evento){
         if (gameover){
+            return;
+        }
+
+        if(vitoria){
             return;
         }
 
@@ -76,7 +80,7 @@ let inimigos_d = [];
             var tamanho = Math.random() * 60 + 10;
 
         else{
-            var tamanho = Math.random() * 80 + 20;
+            var tamanho = Math.random() * 100 + 20;
         }
 
             let inimigo = {
@@ -194,16 +198,28 @@ function desenhar(){
 
     if (gameover){
         ctx.beginPath();
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
         ctx.fillStyle = "white";
-        ctx.font = 'bold 50px Trebuchet MS';
-        ctx.fillText("GAME OVER!", 460, 320);
+        ctx.font = 'bold 75px Trebuchet MS';
+        ctx.fillText("GAME OVER!", 390, 280);
         ctx.closePath();
 
-        ctx.font = 'bold 20px Trebuchet MS';
-        ctx.fillText("Clique no botão para reiniciar o jogo!", 420, 360);
+        ctx.font = 'bold 25px Trebuchet MS';
+        ctx.fillText("Clique no botão para reiniciar o jogo!", 390, 340);
+        ctx.closePath();
+
+        return;
+    };
+
+    if (vitoria){
+        ctx.beginPath();
+        ctx.fillStyle = "white";
+        ctx.font = 'bold 70px Trebuchet MS';
+        ctx.fillText("Parabéns, você venceu!", 250, 280);
+        ctx.closePath();
+
+        ctx.font = 'bold 25px Trebuchet MS';
+        ctx.fillText("Clique no botão para reiniciar o jogo!", 400, 345);
+        ctx.closePath();
 
         return;
     };
@@ -230,6 +246,10 @@ function desenhar(){
 
                 inimigos_d.splice(i, 1);
                 i--;
+
+                if (player.tamanho >= 150){
+                    vitoria = true;
+                }
             }
 
             else{
@@ -265,6 +285,10 @@ function desenhar(){
 
                 inimigos_e.splice(i, 1);
                 i--;
+
+                if (player.tamanho >= 150){
+                    vitoria = true;
+                }
             }
 
             else{
@@ -334,16 +358,30 @@ function jogo(){
         return;
     };
 
+    if (vitoria){
+        location.reload();
+        return;
+    };
+
     if (jogoiniciado){
         return;
-    }
+    };
 
     jogoiniciado = true;
 
     movimentacao();
 
-    setInterval(criarInimigoDireita, 2000);
-    setInterval(criarInimigoEsquerda, 3000);
+    setInterval(function(){
+        if (!document.hidden) {
+            criarInimigoDireita();
+        }
+    },2000);
+    
+    setInterval(function(){
+        if (!document.hidden) {
+            criarInimigoEsquerda();
+        }
+    },3000);
 
     desenhar()
     
