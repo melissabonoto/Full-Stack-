@@ -33,11 +33,11 @@ function movimentacao(){
     document.addEventListener("keydown", function(evento){
         if (gameover){
             return;
-        }
+        };
 
         if(vitoria){
             return;
-        }
+        };
 
         var tecla = evento.key;
         var vel = 20;
@@ -97,6 +97,7 @@ let inimigos_d = [];
                 img: new Image()
 
         };
+
         if (tamanho < 30){
             inimigo.img.src = `imagens/peixe10.png`;
             inimigo.w += 30;
@@ -193,6 +194,7 @@ let inimigos_d = [];
 }
 
 let cont_vida = 3;
+
 function desenhar(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -230,7 +232,6 @@ function desenhar(){
     ctx.drawImage(fundo, 0, 0, canvas.width, canvas.height);
 
     for (let i=0; i <inimigos_d.length; i++){
-
         let inimigo = inimigos_d[i];
         ctx.drawImage(inimigo.img, inimigo.x, inimigo.y, inimigo.w, inimigo.h);
         inimigo.x -= inimigo.mov;
@@ -383,6 +384,6 @@ function jogo(){
         }
     },3000);
 
-    desenhar()
+    desenhar();
     
-}
+};
