@@ -76,8 +76,13 @@ let inimigos_d = [];
             var tamanho = Math.random() * 40 + 5;
         }
 
-        else if (player.tamanho < 50)
+        else if (player.tamanho < 50){
             var tamanho = Math.random() * 60 + 10;
+        }
+
+        else if (player.tamanho < 80){
+                var tamanho = Math.random() * 90 + 15;
+        }
 
         else{
             var tamanho = Math.random() * 100 + 20;
@@ -134,8 +139,13 @@ let inimigos_d = [];
                 var tamanho = Math.random() * 40 + 5;
             }
 
-            else if (player.tamanho < 50)
-                var tamanho = Math.random() * 70 + 10;
+            else if (player.tamanho < 50){
+                var tamanho = Math.random() * 60 + 10;
+            }
+
+            else if (player.tamanho < 80){
+                var tamanho = Math.random() * 90 + 15;
+            }
 
             else{
                 var tamanho = Math.random() * 100 + 20;
