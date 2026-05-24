@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Carros</title>
+        <link href="style.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <a href="/cadastrar_carro.html"> <button id="button4"> Cadastrar carro</button> </a>
+
+        <h1>Carros</h1>
+
+        <% for(var i=0; i < carros.length; i++){%>
+            <div id="carros">
+                <div id="carro">
+                    <p> Marca: <%= carros[i].db_marca %></p>
+                    <p> Modelo: <%= carros[i].db_modelo %></p>
+                    <p> Ano: <%= carros[i].db_ano %></p>
+                    <p> Quantidade: <%= carros[i].db_qtde %></p>
+
+                    <% if (carros[i].db_qtde == 0){%>
+                        <p>Esgotado!</p>
+                    <% } %>
+
+                    <a href="/remover?id=<%= carros[i]._id %>"> <button>Remover</button> </a>
+                    <a href="/vender?id=<%= carros[i]._id %>"> <button>Vender</button> </a>
+                    <a href="/atualizar?id=<%= carros[i]._id %>"> <button>Atualizar</button> </a>
+                    
+                </div>
+            </div>
+        
+        <% } %>
+    </body>
+</html>

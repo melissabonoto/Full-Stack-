@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Atualizar carro</title>
+        <link href="style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Atualizar carro</h1>
+
+        <div class="divform">
+            <form action="/atualizar_carro" method="post">
+                <p>Marca: <input type="text" name="marca" value="<%= carro.db_marca %>"></p>
+                <p>Modelo: <input type="text" name="modelo" value="<%= carro.db_modelo %>"> </p>
+                <p>Ano: <input type="number" name="ano" value="<%= carro.db_ano %>"> </p>
+                <p>Quantidade disponível: <input type="number" name="qtde" value="<%= carro.db_qtde %>"> </p>
+                <input type="hidden" name="id" value="<%= carro._id %>">
+                <input type="submit" value="Atualizar" id="button5"> 
+            </form>
+        </div>
+
+    </body>
+</html>
