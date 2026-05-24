@@ -5,6 +5,8 @@ let gameover = false;
 let vitoria = false;
 let jogoiniciado = false;
 
+
+// imagens do fundo, logo e vida
 var fundo = new Image ();
 fundo.src = "imagens/fundo.jpeg";
 
@@ -29,6 +31,7 @@ let player = {
 
 player.img.src = "imagens/playerr.png";
 
+// movimentação do jogador
 function movimentacao(){
     document.addEventListener("keydown", function(evento){
         if (gameover){
@@ -62,8 +65,10 @@ function movimentacao(){
     })
 }
 
+//spawn de inimigos
 let inimigos_d = [];
     function criarInimigoDireita(){
+        // probabilidades de spawn dos inimigos
         if (player.tamanho == 1){
             var tamanho = 1;
         }
@@ -127,6 +132,7 @@ let inimigos_d = [];
 
     let inimigos_e = [];
     function criarInimigoEsquerda(){
+        // probabilidades de spawn dos inimigos
            if (player.tamanho == 1){
                 var tamanho = 1;
             }
@@ -187,6 +193,7 @@ let inimigos_d = [];
         inimigos_e.push(inimigo);
     }
 
+    // verificar colisão entre jogador e inimigos
     function colidiu(player, inimigo){
         let margem_player = player.w * 0.25;
         let margem_inimigo = inimigo.w * 0.25;
@@ -208,6 +215,7 @@ let cont_vida = 3;
 function desenhar(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    //telas de gameover e vitória
     if (gameover){
         ctx.beginPath();
         ctx.fillStyle = "white";
@@ -241,6 +249,8 @@ function desenhar(){
 
     ctx.drawImage(fundo, 0, 0, canvas.width, canvas.height);
 
+    // desenho de inimigos e colisão
+    
     for (let i=0; i <inimigos_d.length; i++){
         let inimigo = inimigos_d[i];
         ctx.drawImage(inimigo.img, inimigo.x, inimigo.y, inimigo.w, inimigo.h);
@@ -318,6 +328,7 @@ function desenhar(){
 
     ctx.drawImage(player.img, player.x, player.y, player.w, player.h);
 
+    //menu com vidas e tamanho
     ctx.beginPath();
     ctx.fillStyle = "steelblue";
     ctx.globalAlpha = 0.65;
